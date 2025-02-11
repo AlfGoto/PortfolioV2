@@ -3,10 +3,10 @@
 import { useState, useEffect } from "react";
 
 export function Rectangle() {
-  const [W, setW] = useState(20);
-  const [H, setH] = useState(20);
-  const [D, setD] = useState(20);
-  const [hover, setHover] = useState(false);
+  const baseHeight = 50;
+  const [W, setW] = useState(baseHeight);
+  const [H, setH] = useState(baseHeight);
+  const [D, setD] = useState(baseHeight);
   const [isMouseDown, setIsMouseDown] = useState(false);
   const [activeFace, setActiveFace] = useState<
     "front" | "top" | "right" | null
@@ -23,24 +23,29 @@ export function Rectangle() {
   useEffect(() => {
     if (!isMouseDown) {
       const interval = setInterval(() => {
-        setW((prevW) => (prevW > 20 ? prevW - agrandissement : prevW));
-        setH((prevH) => (prevH > 20 ? prevH - agrandissement : prevH));
-        setD((prevD) => (prevD > 20 ? prevD - agrandissement : prevD));
+        setW((prevW) => (prevW > baseHeight ? prevW - agrandissement : prevW));
+        setH((prevH) => (prevH > baseHeight ? prevH - agrandissement : prevH));
+        setD((prevD) => (prevD > baseHeight ? prevD - agrandissement : prevD));
       }, 16);
 
       return () => clearInterval(interval);
     }
   }, [isMouseDown]);
 
+  const handleTouchMove = (e: React.TouchEvent) => {
+    // Prevent scrolling during touch interaction
+    e.preventDefault();
+  };
+
   useEffect(() => {
     if (isMouseDown && activeFace) {
       const interval = setInterval(() => {
         if (activeFace === "front") {
-          setD((prevD) => Math.min(prevD + agrandissement, 50));
+          setD((prevD) => Math.min(prevD + agrandissement, baseHeight * 2));
         } else if (activeFace === "top") {
-          setH((prevH) => Math.min(prevH + agrandissement, 50));
+          setH((prevH) => Math.min(prevH + agrandissement, baseHeight * 2));
         } else if (activeFace === "right") {
-          setW((prevW) => Math.min(prevW + agrandissement, 50));
+          setW((prevW) => Math.min(prevW + agrandissement, baseHeight * 2));
         }
       }, 16);
 

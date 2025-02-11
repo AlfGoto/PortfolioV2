@@ -51,14 +51,18 @@ body {
   transform-style: preserve-3d;
   transform: rotateX(-20deg) rotateY(-30deg);
 }
+body:has(.brique:hover) {
+  overflow: hidden;
+}
 
 .brique > * {
   position: absolute;
   background: #b7410e;
   transform-style: preserve-3d;
   box-shadow: 0px 0px 50px inset rgba(0, 0, 0, 0.3);
+  user-select: none;
 
-  &:hover{
+  &:hover {
     background-color: #ff621e;
   }
 }
