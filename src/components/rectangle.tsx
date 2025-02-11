@@ -32,11 +32,6 @@ export function Rectangle() {
     }
   }, [isMouseDown]);
 
-  const handleTouchMove = (e: React.TouchEvent) => {
-    // Prevent scrolling during touch interaction
-    e.preventDefault();
-  };
-
   useEffect(() => {
     if (isMouseDown && activeFace) {
       const interval = setInterval(() => {
