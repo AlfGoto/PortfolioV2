@@ -3,6 +3,25 @@
 import { useState, useEffect } from "react";
 
 export function Rectangle() {
+  const style = {
+    "--brique-w": `100px`,
+    "--brique-h": `100px`,
+    "--brique-d": `100px`,
+  } as React.CSSProperties;
+
+  return (
+    <div className="brique" style={style}>
+      <div className="back"></div>
+      <div className="left"></div>
+      <div className="right"></div>
+      <div className="top"></div>
+      <div className="bottom"></div>
+      <div className="front"></div>
+    </div>
+  );
+}
+
+export function ResizableRectangle() {
   const baseHeight = 50;
   const [W, setW] = useState(baseHeight);
   const [H, setH] = useState(baseHeight);
