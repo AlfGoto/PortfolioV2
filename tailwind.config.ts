@@ -12,6 +12,9 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      transformStyle: {
+        "3d": "preserve-3d",
+      },
     },
   },
   plugins: [],

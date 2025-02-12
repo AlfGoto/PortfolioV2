@@ -13,7 +13,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body style={{ animation: "flyIn 2s ease-out" }}>
+      <body style={{ animation: "flyIn 2s ease-out" }} className="overflow-x-hidden">
         <div id="wrapper">{children}</div>
       </body>
     </html>

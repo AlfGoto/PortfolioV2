@@ -10,6 +10,7 @@ export default function Home() {
       </Section>
       <Section>Contact Me</Section>
       <Section>Commentaires</Section>
+      <div className="h-[200svh] absolute">{" "}</div>
     </>
   );
 }

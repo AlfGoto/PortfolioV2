@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .transform-3d {
+    transform-style: preserve-3d;
+  }
+  .perspective-2500 {
+    perspective: 2500px;
+  }
+  .rotate-x-80 {
+    transform: rotateX(80deg);
+  }
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -21,7 +33,7 @@ body {
   background: var(--background);
   font-family: sans-serif;
   perspective: 2500px;
-  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 #wrapper {
@@ -41,19 +53,15 @@ body {
 }
 
 .brique {
-  --brique-w: 20svw; /* Largeur de la base */
-  --brique-h: 10svw; /* Hauteur de la base */
-  --brique-d: 50svw; /* Profondeur 3D */
+  --brique-w: 20svw;
+  --brique-h: 10svw; 
+  --brique-d: 50svw; 
 
-  width: var(--brique-w);
-  height: var(--brique-h);
+  width: var(--brique-w) !important;
+  height: var(--brique-h) !important;
   position: relative;
   transform-style: preserve-3d;
-  transform: rotateX(-20deg) rotateY(-30deg);
   user-select: none;
-}
-body:has(.brique:hover) {
-  overflow: hidden;
 }
 
 .brique > * {
