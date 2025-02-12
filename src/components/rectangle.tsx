@@ -9,6 +9,7 @@ export function Rectangle({
   depth?: number;
   style?: object;
 }) {
+
   const baseStyle = {
     "--brique-w": width ? `${width}px` : `100px`,
     "--brique-h": height ? `${height}px` : `100px`,

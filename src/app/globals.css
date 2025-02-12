@@ -54,8 +54,9 @@ body {
 
 .brique {
   --brique-w: 20svw;
-  --brique-h: 10svw; 
-  --brique-d: 50svw; 
+  --brique-h: 10svw;
+  --brique-d: 50svw;
+  --color: #b7410e;
 
   width: var(--brique-w) !important;
   height: var(--brique-h) !important;
@@ -66,15 +67,11 @@ body {
 
 .brique > * {
   position: absolute;
-  background: #b7410e;
+  background: var(--color);
   transform-style: preserve-3d;
   box-shadow: 0px 0px 50px inset rgba(0, 0, 0, 0.3);
   user-select: none;
   -webkit-user-select: none;
-
-  &:hover {
-    background-color: #ff621e;
-  }
 }
 
 .brique .front {

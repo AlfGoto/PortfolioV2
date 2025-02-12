@@ -129,7 +129,10 @@ export function Carousel3D() {
             width={w}
             height={h}
             depth={d}
-            style={{ transform: "rotateX(-90deg) rotateY(-135deg)" }}
+            style={{
+              transform: "rotateX(-90deg) rotateY(-135deg)",
+              "--color": "blue",
+            }}
           />
         </div>
         <div className={childDivStyle}>
@@ -139,6 +142,7 @@ export function Carousel3D() {
             depth={d}
             style={{
               transform: `rotateX(-90deg) rotateY(180deg) translateZ(5svw)`,
+              "--color": "green",
             }}
           />
         </div>
@@ -147,7 +151,10 @@ export function Carousel3D() {
             width={w}
             height={h}
             depth={d}
-            style={{ transform: "rotateX(-90deg) rotateY(135deg)" }}
+            style={{
+              transform: "rotateX(-90deg) rotateY(135deg)",
+              "--color": "red",
+            }}
           />
         </div>
       </div>
@@ -159,6 +166,7 @@ export function Carousel3D() {
             depth={d}
             style={{
               transform: `rotateX(-90deg) rotateY(-90deg) translateZ(5svw)`,
+              "--color": "wheat",
             }}
           />
         </div>
@@ -170,6 +178,7 @@ export function Carousel3D() {
             depth={d}
             style={{
               transform: `rotateX(-90deg) rotateY(90deg) translateZ(5svw)`,
+              "--color": "lightblue",
             }}
           />
         </div>
@@ -180,7 +189,10 @@ export function Carousel3D() {
             width={w}
             height={h}
             depth={d}
-            style={{ transform: "rotateX(-90deg) rotateY(-45deg)" }}
+            style={{
+              transform: "rotateX(-90deg) rotateY(-45deg)",
+              "--color": "yellow",
+            }}
           />
         </div>
         <div className={childDivStyle}>
@@ -188,7 +200,10 @@ export function Carousel3D() {
             width={w}
             height={h}
             depth={d}
-            style={{ transform: `rotateX(-90deg) translateZ(5svw)` }}
+            style={{
+              transform: `rotateX(-90deg) translateZ(5svw)`,
+              "--color": "orange",
+            }}
           />
         </div>
         <div className={childDivStyle}>
