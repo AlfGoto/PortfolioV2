@@ -12,18 +12,16 @@ export function Carousel3D() {
   const [angle, setAngle] = useState(0);
 
   useEffect(() => {
-    console.log("useEffect");
     setTimeout(() => {
-      if (toSwap < 0) {
-        setAngle((ang) => ang + 1);
-        setToSwap((ang) => ang + 1);
-      } else if (toSwap > 0) {
-        setAngle((ang) => ang - 1);
-        setToSwap((ang) => ang - 1);
-      }
+      if (angle % 45 !== 0) {
+        if (toSwap < 0) {
+          setAngle((ang) => ang + 1);
+        } else if (toSwap > 0) {
+          setAngle((ang) => ang - 1);
+        }
+      } else setToSwap(0);
     }, 1);
-  }, [toSwap]);
-
+  }, [toSwap, angle]);
 
   const childDivStyle =
     "w-[10svw] h-[10svw] gap-[1svw] flex items-center transform-3d bg-transparent";
@@ -90,8 +88,14 @@ export function Carousel3D() {
       const diffY = initialY - currentY;
 
       if (Math.abs(diffX) > Math.abs(diffY)) {
-        if (diffX > 0) setToSwap(-45);
-        else setToSwap(45);
+        if (toSwap !== 0) return;
+        if (diffX > 0) {
+          setAngle((ang) => ang + 1);
+          setToSwap(-1);
+        } else {
+          setAngle((ang) => ang - 1);
+          setToSwap(1);
+        }
       }
       initialX = null;
       initialY = null;
@@ -108,7 +112,7 @@ export function Carousel3D() {
       window.removeEventListener("touchstart", startTouch);
       window.removeEventListener("touchmove", moveTouch);
     };
-  }, [angle]);
+  }, [angle, toSwap]);
 
   return (
     <div
