@@ -8,7 +8,22 @@ export function Carousel3D() {
   const [h, setH] = useState(100);
   const [d, setD] = useState(25);
 
+  const [toSwap, setToSwap] = useState(0);
   const [angle, setAngle] = useState(0);
+
+  useEffect(() => {
+    console.log("useEffect");
+    setTimeout(() => {
+      if (toSwap < 0) {
+        setAngle((ang) => ang + 1);
+        setToSwap((ang) => ang + 1);
+      } else if (toSwap > 0) {
+        setAngle((ang) => ang - 1);
+        setToSwap((ang) => ang - 1);
+      }
+    }, 1);
+  }, [toSwap]);
+
 
   const childDivStyle =
     "w-[10svw] h-[10svw] gap-[1svw] flex items-center transform-3d bg-transparent";
@@ -20,6 +35,7 @@ export function Carousel3D() {
     const screenWidth = window.innerWidth;
     const deform = 0.1;
     const width = screenWidth * deform;
+    const deplacement = 4;
 
     if (screenWidth < 1000) heightModif = 2;
     if (screenWidth < 500) heightModif = 3;
@@ -31,23 +47,66 @@ export function Carousel3D() {
     const section = document.getElementById("Projects");
     if (!section) return;
 
-    const handleScroll = (e: WheelEvent) => {
-      const rekt = section.getBoundingClientRect();
-      if (rekt.top < 100 && angle < 315) {
-        document.body.style.overflow = "hidden";
-        section.scrollIntoView();
+    let initialX: number | null = null;
+    let initialY: number | null = null;
 
-        if (e.deltaY > 0) setAngle((ang) => ang + 2);
-        else setAngle((ang) => ang - 2);
+    function startTouch(e: TouchEvent) {
+      initialX = e.touches[0].clientX;
+      initialY = e.touches[0].clientY;
+    }
+
+    const handleWheelScroll = (e: WheelEvent) => {
+      handleScroll(e.deltaY);
+    };
+
+    function handleScroll(deltaY: number) {
+      const rekt = section!.getBoundingClientRect();
+      const descend = deltaY > 0;
+
+      if (rekt.top < 10 && angle < 310 && descend) {
+        if (rekt.top < -10) section!.scrollIntoView();
+        slideCarousel(descend);
+      } else if (rekt.top > -10 && angle > 5 && !descend) {
+        if (rekt.top > 10) section!.scrollIntoView();
+        slideCarousel(descend);
       } else {
         document.body.style.overflow = "auto";
       }
-    };
+    }
 
-    window.addEventListener("wheel", handleScroll);
+    function slideCarousel(descend: boolean) {
+      document.body.style.overflow = "hidden";
+      if (descend && angle + deplacement < 320)
+        setAngle((ang) => ang + deplacement);
+      else if (angle - deplacement > 0) setAngle((ang) => ang - deplacement);
+    }
 
+    function moveTouch(e: TouchEvent) {
+      if (initialY === null || initialX === null) return;
+
+      const currentX = e.touches[0].clientX;
+      const currentY = e.touches[0].clientY;
+      const diffX = initialX - currentX;
+      const diffY = initialY - currentY;
+
+      if (Math.abs(diffX) > Math.abs(diffY)) {
+        if (diffX > 0) setToSwap(-45);
+        else setToSwap(45);
+      }
+      initialX = null;
+      initialY = null;
+    }
+
+    // Attach event listeners
+    window.addEventListener("wheel", handleWheelScroll);
+    window.addEventListener("touchstart", startTouch);
+    window.addEventListener("touchmove", moveTouch);
+
+    // Cleanup event listeners
     return () => {
-      window.removeEventListener("wheel", handleScroll);
+      window.removeEventListener("wheel", handleWheelScroll);
+      window.removeEventListener("touchstart", startTouch);
+      window.removeEventListener("touchmove", moveTouch);
     };
   }, [angle]);
 
