@@ -13,7 +13,7 @@ export default function Section({
 }) {
   return (
     <section
-      className={`w-full min-h-[500px] flex justify-center items-center ${
+      className={`w-full min-h-[500px] flex justify-center bg-[--background] items-center ${
         containerClassName || ""
       }`}
     >

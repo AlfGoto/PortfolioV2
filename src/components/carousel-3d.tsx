@@ -2,11 +2,15 @@
 
 import { useEffect, useState } from "react";
 import { Rectangle } from "./rectangle";
+import { ProjectsType } from "../lib/Projects";
+import ProjectCard from "./project-card";
 
-export function Carousel3D() {
+export function Carousel3D({ projects }: { projects: ProjectsType }) {
   const [w, setW] = useState(200);
   const [h, setH] = useState(100);
   const [d, setD] = useState(25);
+
+  console.log(projects)
 
   const [toSwap, setToSwap] = useState(0);
   const [angle, setAngle] = useState(0);
@@ -131,9 +135,8 @@ export function Carousel3D() {
             depth={d}
             style={{
               transform: "rotateX(-90deg) rotateY(-135deg)",
-              "--color": "blue",
             }}
-          />
+          ><ProjectCard project={projects[2]} /></Rectangle>
         </div>
         <div className={childDivStyle}>
           <Rectangle
@@ -142,9 +145,8 @@ export function Carousel3D() {
             depth={d}
             style={{
               transform: `rotateX(-90deg) rotateY(180deg) translateZ(5svw)`,
-              "--color": "green",
             }}
-          />
+          ><ProjectCard project={projects[3]} /></Rectangle>
         </div>
         <div className={childDivStyle}>
           <Rectangle
@@ -153,9 +155,8 @@ export function Carousel3D() {
             depth={d}
             style={{
               transform: "rotateX(-90deg) rotateY(135deg)",
-              "--color": "red",
             }}
-          />
+          ><ProjectCard project={projects[4]} /></Rectangle>
         </div>
       </div>
       <div className={parentStyle}>
@@ -166,9 +167,8 @@ export function Carousel3D() {
             depth={d}
             style={{
               transform: `rotateX(-90deg) rotateY(-90deg) translateZ(5svw)`,
-              "--color": "wheat",
             }}
-          />
+          ><ProjectCard project={projects[5]} /></Rectangle>
         </div>
         <div className={childDivStyle}></div>
         <div className={childDivStyle}>
@@ -178,9 +178,8 @@ export function Carousel3D() {
             depth={d}
             style={{
               transform: `rotateX(-90deg) rotateY(90deg) translateZ(5svw)`,
-              "--color": "lightblue",
             }}
-          />
+          ><ProjectCard project={projects[6]} /></Rectangle>
         </div>
       </div>
       <div className={parentStyle}>
@@ -191,20 +190,16 @@ export function Carousel3D() {
             depth={d}
             style={{
               transform: "rotateX(-90deg) rotateY(-45deg)",
-              "--color": "yellow",
             }}
-          />
+          ><ProjectCard project={projects[7]} /></Rectangle>
         </div>
         <div className={childDivStyle}>
           <Rectangle
             width={w}
             height={h}
             depth={d}
-            style={{
-              transform: `rotateX(-90deg) translateZ(5svw)`,
-              "--color": "orange",
-            }}
-          />
+            style={{ transform: `rotateX(-90deg) translateZ(5svw)` }}
+          ><ProjectCard project={projects[0]} /></Rectangle>
         </div>
         <div className={childDivStyle}>
           <Rectangle
@@ -212,7 +207,7 @@ export function Carousel3D() {
             height={h}
             depth={d}
             style={{ transform: "rotateX(-90deg) rotateY(45deg)" }}
-          />
+          ><ProjectCard project={projects[1]} /></Rectangle>
         </div>
       </div>
     </div>

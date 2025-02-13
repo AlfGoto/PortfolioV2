@@ -17,6 +17,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --html: #ededed;
 
   --max-layout-width: 1000px;
 }
@@ -25,12 +26,17 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --html: #2d2d2d;
   }
+}
+
+html {
+  color: var(--background);
 }
 
 body {
   color: var(--foreground);
-  background: var(--background);
+  background: var(--html);
   font-family: sans-serif;
   perspective: 2500px;
   scroll-behavior: smooth;
@@ -56,10 +62,12 @@ body {
   --brique-w: 20svw;
   --brique-h: 10svw;
   --brique-d: 50svw;
-  --color: #b7410e;
+  --color: #ffffff;
 
   width: var(--brique-w) !important;
   height: var(--brique-h) !important;
+  max-height: 500px;
+  max-width: 500px;
   position: relative;
   transform-style: preserve-3d;
   user-select: none;
@@ -110,4 +118,26 @@ body {
   height: var(--brique-d);
   bottom: 0;
   transform: rotateX(90deg) translateZ(calc(var(--brique-d) / -2));
+}
+
+.persp {
+  perspective: 2325px;
+}
+
+@media only screen and (min-width: 700px) {
+  .persp {
+    perspective: 2500px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .persp {
+    perspective: 2650px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .persp {
+    perspective: 2800px;
+  }
 }
