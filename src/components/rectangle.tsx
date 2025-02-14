@@ -20,6 +20,9 @@ export function Rectangle({
     "--brique-h": height ? `${height}px` : `100px`,
     "--brique-d": depth ? `${depth}px` : `100px`,
     "--color": color ? `${color}` : `#ffffff`,
+    willChange: "transform",
+    transformStyle: "preserve-3d",
+    backfaceVisibility: "hidden",
   } as React.CSSProperties;
 
   return (

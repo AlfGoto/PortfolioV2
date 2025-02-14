@@ -1,24 +1,21 @@
-const P = [
+const P: ProjectsType = [
   {
     name: "Lowback",
     description: "",
     images: ["dotnet.png"],
     banner: "dotnet.png",
-    url: null,
   },
   {
     name: "Sezame",
     description: "",
     images: ["logo.png", "marketplace.png"],
-    banner: "logo",
+    banner: "marketplace.png",
     url: "https://joinsezame.com/",
   },
   {
     name: "Ce portfolio",
     description: "",
     images: [""],
-    banner: null,
-    url: null,
   },
   {
     name: "Démineur",
@@ -52,7 +49,6 @@ const P = [
       "shipSeller3.png",
     ],
     banner: "portfolio3D2.png",
-    url: null,
   },
   {
     name: "Cabinet de curiosité",
@@ -73,10 +69,15 @@ const P = [
       "textMaker3.png",
     ],
     banner: "FenetreS1.png",
-    url: null,
   },
 ];
 
 export default P;
-export type ProjectsType = typeof P;
-export type Project = ProjectsType["0"];
+export type ProjectsType = Project[];
+export type Project = {
+  name: string;
+  description: string;
+  images: string[];
+  url?: string;
+  banner?: string;
+};

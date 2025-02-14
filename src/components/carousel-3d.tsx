@@ -10,8 +10,6 @@ export function Carousel3D({ projects }: { projects: ProjectsType }) {
   const [h, setH] = useState(100);
   const [d, setD] = useState(25);
 
-  console.log(projects)
-
   const [toSwap, setToSwap] = useState(0);
   const [angle, setAngle] = useState(0);
 
@@ -125,6 +123,7 @@ export function Carousel3D({ projects }: { projects: ProjectsType }) {
         transform: `translateZ(2000px) rotateX(90deg) rotateZ(${angle}deg)`,
         transformStyle: "preserve-3d",
         transformOrigin: "center",
+        backfaceVisibility: 'hidden',
       }}
     >
       <div className={parentStyle}>

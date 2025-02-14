@@ -49,12 +49,21 @@ body {
   animation: zoomIn 3s ease-in;
 }
 
+img {
+  image-rendering: -webkit-optimize-contrast;
+  backface-visibility: hidden;
+}
+
 @keyframes zoomIn {
   0% {
+    overflow-x: visible;
     transform: translateY(-10vh) scale(0.02) rotateX(30deg);
   }
-  100% {
+  99% {
     transform: translateY(0) scale(1) rotateX(0deg);
+  }
+  100% {
+    overflow-x: hidden;
   }
 }
 
@@ -71,6 +80,7 @@ body {
   position: relative;
   transform-style: preserve-3d;
   user-select: none;
+  willchange: "transform";
 }
 
 .brique > * {
@@ -80,6 +90,8 @@ body {
   box-shadow: 0px 0px 50px inset rgba(0, 0, 0, 0.3);
   user-select: none;
   -webkit-user-select: none;
+  image-rendering: crisp-edges;
+  will-change: transform;
 }
 
 .brique .front {
